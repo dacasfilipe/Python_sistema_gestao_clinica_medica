@@ -83,6 +83,7 @@ class Clinica:
     
     def cadastra_paciente(self):
         self.nome_paciente = input('Digite o nome do paciente: ').upper()
+        #verifica se o paciente já existe na base de dados
         if self.nome_paciente in self.nomes_pacientes:
             print('Paciente já cadastrado, deseja alterar o cadastro?')
             print('1 - Sim')
@@ -113,8 +114,33 @@ class Clinica:
                     conexao.commit()
                     conexao.close()
                     print('Paciente cadastrado com sucesso! \n')
+                    
                 case 2:
                     pass
+        #cadastra o paciente na base de dados caso não exista
+        if self.nome_paciente not in self.nomes_pacientes:
+            print(f'{self.nome_paciente}')
+            self.identidade = input('Digite a identidade do paciente: ').upper()
+            self.data_nascimento = input('Digite a data de nascimento do paciente: ').upper()
+            self.fone = input('Digite o telefone do paciente: ').upper()
+            self.email = input('Digite o email do paciente: ').upper()
+            self.endereco = input('Digite o endereço do paciente: ').upper()
+            self.profissao = input('Digite a profissão do paciente: ').upper()
+            self.outros = input('Digite as observações do paciente: ').upper()
+            conexao = sqlite3.connect('base_pacientes.db')
+            cursor_base = conexao.cursor()
+            cursor_base = cursor_base.execute("INSERT INTO pacientes (nome_paciente, identidade, telefone, email, endereco, profissao, outros) VALUES (?, ?, ?, ?, ?, ?, ?)",{
+                'nome_paciente': self.nome_paciente,
+                'identidade':self.identidade,
+                'telefone':self.fone,
+                'email':self.email,
+                'endereco':self.endereco,
+                'profissao':self.profissao,
+                'outros':self.outros})
+            conexao.commit()
+            conexao.close()
+            print('Paciente cadastrado com sucesso! \n')
+            
             
                  
            
