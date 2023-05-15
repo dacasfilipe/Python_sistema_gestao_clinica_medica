@@ -91,6 +91,7 @@ class Clinica:
             opcao = int(input('Opção: '))
             match opcao:
                 case 1:
+                    #lógica do paciente já cadastrado/ alterar dados
                     print(f'{self.nome_paciente}')
                     self.identidade = input('Digite a identidade do paciente: ').upper()
                     self.data_nascimento = input('Digite a data de nascimento do paciente: ').upper()
