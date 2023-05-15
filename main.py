@@ -44,3 +44,27 @@ class Clinica:
         self.rel_agendamento = []
         self.hist_receita_consultas = {}
         
+        #ler dados na base de dados
+        try:
+            conexao1 = sqlite3.connect('base_pacientes.db')
+            cursor_base = conexao1.cursor()
+            for paciente in cursor_base.execute("SELECT nome_paciente FROM pacientes"):
+                self.prontuario.update({
+                    paciente[0]: {
+                        'Nome: ': paciente[0],
+                        'Data de Nascimento: ': paciente[5],
+                        'Telefone para contato: ': paciente[2],
+                        'Endereco residencial: ': paciente[4],
+                        'Observações: ': paciente[7],
+                        'Número de Consultas: ': ''}
+                })
+            conexao1.commit()
+            
+        except sqlite3.Error as e:
+            print(f"Ocorreu um erro: {e}")
+            pass
+        finally:
+            if conexao1:
+                conexao1.close()
+        
+        
