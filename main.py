@@ -112,6 +112,8 @@ class Clinica:
                     conexao.commit()
                     conexao.close()
                     print('Paciente cadastrado com sucesso! \n')
+                case 2:
+                    pass
             
                  
            
