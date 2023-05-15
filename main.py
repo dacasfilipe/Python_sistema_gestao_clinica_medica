@@ -1,4 +1,3 @@
-
 import pandas as pd
 from operator import getitem
 from datetime import date
