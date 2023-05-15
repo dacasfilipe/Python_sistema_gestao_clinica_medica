@@ -143,5 +143,15 @@ class Clinica:
             
         #adiciona o paciente na lista de pacientes cadastrados    
         self.nomes_pacientes.append(self.nome_paciente)
-                 
+
+        #adiciona o paciente na relação de prontuários de pacientes
+        self.prontuario.update({
+            self.nome_paciente: {
+                'Nome: ': self.nome_paciente,
+                'Data de Nascimento: ': self.data_nascimento,
+                'Endereço Residencial: ': self.endereco,
+                'Observações: ': self.outros,
+                'Número de Consultas: ': self.num_consultas,
+                'Prontuario: ': self.rel_agendamento}
+        })
            
