@@ -28,6 +28,7 @@ class Clinica:
         self.plano = ''
         self.data = ''
         self.hora = ''
+        #aqui embaixo temos as estrutura de dados
         self.prontuario = {}
         self.base_medicos = {}
         self.nomes_pacientes = {}
