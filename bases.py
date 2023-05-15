@@ -37,6 +37,7 @@ def cria_bases():
         
     except sqlite3.Error as e:
         print(f"Ocorreu um erro: {e}")
+        pass
     finally:
         if conexao1:
             conexao1.close()
