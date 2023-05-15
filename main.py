@@ -45,6 +45,8 @@ class Clinica:
         self.hist_receita_consultas = {}
         
         #ler dados na base de dados
+        conexao1 = None
+        conexao2 = None
         try:
             conexao1 = sqlite3.connect('base_pacientes.db')
             cursor_base = conexao1.cursor()
@@ -59,12 +61,22 @@ class Clinica:
                         'Número de Consultas: ': ''}
                 })
             conexao1.commit()
-            
-        except sqlite3.Error as e:
-            print(f"Ocorreu um erro: {e}")
-            pass
+
+            conexao2 = sqlite3.connect('base_medicos.db')
+            cursor_base = conexao2.cursor()
+            for medico in cursor_base.execute("SELECT nome_medico FROM medicos"):
+                for nome in medico[0::]:
+                    self.nomes_medicos.append(nome)
+            for medico in cursor_base.execute('SELECT * FROM medicos'):
+                self.base_medicos.update({
+                    medico[0]:medico[2]})
+              
+            conexao2.commit()
+
+        except Exception as e:
+            print("Ocorreu um erro:", e)
         finally:
             if conexao1:
                 conexao1.close()
-        
-        
+            if conexao2:
+                conexao2.close()
