@@ -141,6 +141,7 @@ class Clinica:
             conexao.close()
             print('Paciente cadastrado com sucesso! \n')
             
-            
+        #adiciona o paciente na lista de pacientes cadastrados    
+        self.nomes_pacientes.append(self.nome_paciente)
                  
            
