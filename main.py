@@ -154,4 +154,8 @@ class Clinica:
                 'Número de Consultas: ': self.num_consultas,
                 'Prontuario: ': self.rel_agendamento}
         })
-           
+        
+        #retorna o último estado para a instância base da classe
+        return self.nomes_pacientes
+        #fim dos métodos de cadastro pacientes
+    
