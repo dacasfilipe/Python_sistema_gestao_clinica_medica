@@ -165,3 +165,19 @@ class Clinica:
             print('1 - Sim')
             print('2 - Não')
             opcao = int(input('Opção: '))
+            match opcao:
+                case 1:
+                    print(f'Dr(a){self.nome_med}')
+                    self.crm = input('Digite o CRM do médico: ').upper()
+                    self.especialidade = input('Digite a especialidade do médico: ').upper()
+                    
+                    conexao = sqlite3.connect('base_medicos.db')
+                    cursor_base = conexao.cursor()
+                    cursor_base.execute("REPLACE INTO medicos (nome_medico, crm, especialidade) VALUES (?, ?, ?)",{
+                        'nome_medico': self.nome_med,
+                        'crm':self.crm,
+                        'especialidade':self.especialidade
+                    })
+                    conexao.commit()
+                    conexao.close()
+                    print('Cadastro alterado com sucesso! \n')
