@@ -158,4 +158,10 @@ class Clinica:
         #retorna o último estado para a instância base da classe
         return self.nomes_pacientes
         #fim dos métodos de cadastro pacientes
-    
+    def cadastra_medico(self):
+        self.nome_med = input('Digite o nome completo do médico: ').upper()
+        if self.nome_med in self.nomes_medicos:
+            print('Médico já cadastrado, deseja alterar o cadastro?')
+            print('1 - Sim')
+            print('2 - Não')
+            opcao = int(input('Opção: '))
