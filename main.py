@@ -181,3 +181,6 @@ class Clinica:
                     conexao.commit()
                     conexao.close()
                     print('Cadastro alterado com sucesso! \n')
+                case 2:
+                    pass
+                    
