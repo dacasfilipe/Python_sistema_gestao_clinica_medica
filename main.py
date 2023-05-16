@@ -183,4 +183,22 @@ class Clinica:
                     print('Cadastro alterado com sucesso! \n')
                 case 2:
                     pass
-                    
+        #cadastra o médico na base de dados caso não exista
+        if self.nome_med not in self.nomes_medicos:
+            print(f'Dr(a){self.nome_med}')
+            self.crm = input('Digite o CRM do médico: ').upper()
+            self.especialidade = input('Digite a especialidade do médico: ').upper()
+            
+            conexao = sqlite3.connect('base_medicos.db')
+            cursor_base = conexao.cursor()
+            cursor_base.execute("INSERT INTO medicos (nome_medico, crm, especialidade) VALUES (?, ?, ?)",{
+                'nome_medico': self.nome_med,
+                'crm':self.crm,
+                'especialidade':self.especialidade
+            })
+            conexao.commit()
+            conexao.close()
+            print('Médico cadastrado com sucesso! \n')
+            self.nomes_medicos.append(self.nome_med)
+            self.base_medicos.update({f'{self.nome_med}':f'{self.especialidade}'})
+            return self.nomes_medicos,self.base_medicos                    
