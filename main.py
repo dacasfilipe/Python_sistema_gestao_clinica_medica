@@ -211,4 +211,9 @@ class Clinica:
             print('Paciente não cadastrado, deseja cadastrar?\n')
             self.cadastra_paciente()
             print('Retomando o Agendamento... \n')
-            
+            #Aqui o paciente já está cadastrado, perguntamos então qual o médico que gostaria de consultar
+            self.nome_med = input('Qual o nome do médico(a) que gostaria de consultar?').upper()
+            if self.nome_med not in self.nomes_medicos:
+                print('Médico não cadastrado, deseja cadastrar?\n')
+                self.cadastra_medico()
+                print(f'Retomando com o Agendamento para o Dr. {self.nome_med} \n')
