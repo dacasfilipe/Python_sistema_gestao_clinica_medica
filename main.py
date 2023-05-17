@@ -201,4 +201,14 @@ class Clinica:
             print('Médico cadastrado com sucesso! \n')
             self.nomes_medicos.append(self.nome_med)
             self.base_medicos.update({f'{self.nome_med}':f'{self.especialidade}'})
+            #retorna o escopo global da classe com os últimos dados fornecidos para as duas bases
             return self.nomes_medicos,self.base_medicos                    
+    
+    #função para o agendamento de consultas
+    def agenda_consultas(self):
+        self.nome_paciente = input('Digite o nome completo do paciente: ').upper()
+        if self.nome_paciente not in self.nomes_pacientes:
+            print('Paciente não cadastrado, deseja cadastrar?\n')
+            self.cadastra_paciente()
+            print('Retomando o Agendamento... \n')
+            
