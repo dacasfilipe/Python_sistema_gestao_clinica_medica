@@ -217,3 +217,21 @@ class Clinica:
                 print('Médico não cadastrado, deseja cadastrar?\n')
                 self.cadastra_medico()
                 print(f'Retomando com o Agendamento para o Dr. {self.nome_med} \n')
+                #verificação do plano de saúde
+                print('SUS / UNIMED / CAUZZO')
+                self.nome_plano = input('Qual o plano de saúde? Digite o nome caso houver.').upper()
+                if self.nome_plano in self.nomes_planos:
+                    match self.nome_plano:
+                        case 'SUS':
+                            self.valor_consulta = 0
+                            print('Aplicado desconto de 100% \n')
+                            print(f'Valor da consulta: R${self.valor_consulta}')
+                        case 'UNIMED':
+                            self.valor_consulta = self.valor_consulta / 2
+                            print('Aplicado desconto de 50% \n')
+                            print(f'Valor da consulta: R${self.valor_consulta}')
+                        case 'CAUZZO':
+                            self.valor_consulta = self.valor_consulta - self.valor_consulta * 0.40
+                            print('Aplicado desconto de 40% \n')
+                            print(f'Valor da consulta: R${self.valor_consulta}')
+                            
