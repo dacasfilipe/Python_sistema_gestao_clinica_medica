@@ -239,4 +239,9 @@ class Clinica:
                 while self.data not in self.dias_agendamento:
                     print('Agendamento apenas Segunda, Quarta e Sexta. \n')
                     self.data = input('Qual dia da semana deseja consultar? ').upper()
+                self.hora = int(input('Em qual horário?'))
+                #escolher o horário da consulta
+                while self.hora not in self.horarios:
+                    print('Atendimento das 8 às 11h e das 14 às 17h \n')
+                    self.hora = int(input('Em qual horário?'))
                     
