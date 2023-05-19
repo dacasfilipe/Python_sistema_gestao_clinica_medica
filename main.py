@@ -234,4 +234,9 @@ class Clinica:
                             self.valor_consulta = self.valor_consulta - self.valor_consulta * 0.40
                             print('Aplicado desconto de 40% \n')
                             print(f'Valor da consulta: R${self.valor_consulta}')
-                            
+                #escolher o dia da semana
+                self.data = input('Qual dia da semana deseja consultar?').upper()
+                while self.data not in self.dias_agendamento:
+                    print('Agendamento apenas Segunda, Quarta e Sexta. \n')
+                    self.data = input('Qual dia da semana deseja consultar? ').upper()
+                    
