@@ -244,9 +244,17 @@ class Clinica:
                 while self.hora not in self.horarios:
                     print('Atendimento das 8 às 11h e das 14 às 17h \n')
                     self.hora = int(input('Em qual horário?'))
-                #atualizar a agenda base com as informações do agendamento
-                self.agenda.update({f'Dia: {self.data}, às {self.hora} ':[f'Paciente: {self.nome_paciente}',f' Dr(a): {self.nome_med}',f'Plano: {self.nome_plano}',f'Consulta: {self.consulta}',f'Valor: R${self.valor_consulta}']})
-                #atualizar a série de objetos 
-                self.num_consultas += 1
-                self.receitas_consultas += self.valor_consulta
+                    
+        #atualizar a agenda base com as informações do agendamento
+        self.agenda.update({f'Dia: {self.data}, às {self.hora} ':[f'Paciente: {self.nome_paciente}',f' Dr(a): {self.nome_med}',f'Plano: {self.nome_plano}',f'Consulta: {self.consulta}',f'Valor: R${self.valor_consulta}']})
+        
+        #atualizar a série de objetos 
+        self.num_consultas += 1
+        self.receitas_consultas += self.valor_consulta
+        
+        #gerar relatório de agendamentos de consultas realizadas
+        self.dia = date.today().strftime("%d/%m/%Y")
+        self.rel_agendamento.append(f'Consulta com {self.nome_med}, {self.data}, no dia {self.dia} às {self.hora} horas')
+        
+        
                                    
