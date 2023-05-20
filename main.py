@@ -256,5 +256,11 @@ class Clinica:
         self.dia = date.today().strftime("%d/%m/%Y")
         self.rel_agendamento.append(f'Consulta com {self.nome_med}, {self.data}, no dia {self.dia} às {self.hora} horas')
         
+        #exibição das consultas agendadas
+        print(f'Consulta agendada para {self.data} às {self.hora} horas com o(a) Dr(a) {self.nome_med} \n')
+        print(f'Valor da consulta: R${self.valor_consulta} \n')
+        
+        
+        
         
                                    
