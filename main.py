@@ -306,3 +306,12 @@ class Clinica:
             
         for i in self.base_medicos.items():
             print(i)
+            
+    #relatório gerencial com informações da clínica
+    def relatorio_gerencial(self):
+        print(f'Número total de consultas: {self.num_consultas} \n')
+        print(f'Receita gerada pelas consultas: R${self.receitas_consultas} \n')
+        print('-----------------------------------------------')
+        print(f'Número de pacientes cadastrados: {len(self.nomes_pacientes)} \n')
+        print(f'Número de médicos conveniados: {len(self.nomes_medicos)} \n')
+        print('-----------------------------------------------')
