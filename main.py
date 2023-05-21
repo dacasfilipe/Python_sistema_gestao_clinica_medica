@@ -297,3 +297,12 @@ class Clinica:
             
         for i in self.agenda.keys():
             print(i)                       
+    
+    #função para exibir a relação de médicos conveniados
+    def exibe_medicos(self):
+        print('MÉDICOS CONVENIADOS')
+        if len(self.nomes_medicos) == 0:
+            print('Não existem médicos cadastrados. \n')
+            
+        for i in self.base_medicos.items():
+            print(i)
