@@ -315,3 +315,14 @@ class Clinica:
         print(f'Número de pacientes cadastrados: {len(self.nomes_pacientes)} \n')
         print(f'Número de médicos conveniados: {len(self.nomes_medicos)} \n')
         print('-----------------------------------------------')
+        data_atual = date.today()
+        ultimo_dia = data_atual.replace(day = monthrange(data_atual.year, data_atual.month)[1])
+        if data_atual == ultimo_dia:
+            print(self.receitas_consultas)
+            self.receitas_consultas == 0
+            self.hist_receita_consultas.update({f'MÊS {data_atual.month}':f'R${self.receitas_consultas}'})
+        if data_atual != ultimo_dia:
+            print(f'Receita acumulada: R${self.receitas_consultas} \n')
+            self.hist_receita_consultas.update({f'MÊS {data_atual.month}':f'R${self.receitas_consultas}'})
+            print(self.hist_receita_consultas.items())
+    
