@@ -260,6 +260,19 @@ class Clinica:
         print(f'Consulta agendada para {self.data} às {self.hora} horas com o(a) Dr(a) {self.nome_med} \n')
         print(f'Valor da consulta: R${self.valor_consulta} \n')
         
+        #atualizar o prontuário do paciente
+        self.prontuario.update({
+            self.nome_paciente:{
+                'Nome':self.nome_paciente,
+                'Data de Nascimento':self.data_nasc,
+                'Telefone':self.telefone,
+                'Endereço':self.endereco,
+                'Observações':self.outros,
+                'Número de consultas':self.num_consultas,
+                'Prontuário':self.rel_agendamento
+            }
+        })
+        
         
         
         
