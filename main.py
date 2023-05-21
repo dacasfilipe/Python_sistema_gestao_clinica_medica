@@ -325,4 +325,7 @@ class Clinica:
             print(f'Receita acumulada: R${self.receitas_consultas} \n')
             self.hist_receita_consultas.update({f'MÊS {data_atual.month}':f'R${self.receitas_consultas}'})
             print(self.hist_receita_consultas.items())
-    
+            
+#função para inicialicar a aplicação e exibir o menu de opções
+def main():
+    sistema = Clinica()
