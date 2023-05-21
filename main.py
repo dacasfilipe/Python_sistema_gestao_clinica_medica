@@ -273,7 +273,11 @@ class Clinica:
             }
         })
         
+        #ordenar a relação dos prontuários dos pacientes em ordem alfabética
+        #o método sorted itera sobre cada chave Nome de cada item a partir desta chave
+        self.prontuario = sorted(self.prontuario.items(),key = lambda x: getitem(x[1],'Nome:'))
         
-        
+        #retorna o escopo global da classe com os últimos dados fornecidos para as duas bases
+        return self.agenda, self.prontuario, self.receitas_consultas, self.rel_agendamento, self.nomes_pacientes, self.nomes_medicos, self.nomes_planos, self.base_medicos
         
                                    
