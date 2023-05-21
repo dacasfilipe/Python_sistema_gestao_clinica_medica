@@ -287,4 +287,13 @@ class Clinica:
             print('Não existem registros de prontuários')
             
         for i in self.prontuario.items():
-            print(i)                         
+            print(i)
+    
+    #função para exibir a agenda de consultas
+    def exibe_agenda(self):
+        print('AGENDA')
+        if len(self.agenda.keys()) == 0:
+            print('A agenda está vazia \n')
+            
+        for i in self.agenda.keys():
+            print(i)                       
