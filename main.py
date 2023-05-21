@@ -278,6 +278,13 @@ class Clinica:
         self.prontuario = sorted(self.prontuario.items(),key = lambda x: getitem(x[1],'Nome:'))
         
         #retorna o escopo global da classe com os últimos dados fornecidos para as duas bases
-        return self.agenda, self.prontuario, self.receitas_consultas, self.rel_agendamento, self.nomes_pacientes, self.nomes_medicos, self.nomes_planos, self.base_medicos
-        
-                                   
+        return self.agenda, self.prontuario, self.receitas_consultas, self.rel_agendamento, self.nomes_pacientes
+    
+    #função para exibir os prontuários    
+    def exibe_prontuario(self):
+        print('PRONTUÁRIOS')
+        if len(self.prontuario.keys()) == 0:
+            print('Não existem registros de prontuários')
+            
+        for i in self.prontuario.items():
+            print(i)                         
