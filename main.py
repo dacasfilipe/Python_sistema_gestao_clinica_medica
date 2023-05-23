@@ -344,14 +344,22 @@ def main():
         try:
             opcao = int(input('Digite a opção desejada: '))
             match opcao:
-                case 1: sistema.agenda_consulta()
-                case 2: sistema.cadastra_paciente()
-                case 3: sistema.cadastra_medico()
-                case 4: sistema.exibe_agenda()
-                case 5: sistema.exibe_prontuario()
-                case 6: sistema.relacao_medicos()
-                case 7: sistema.relarotio_geencial()
-                case 9: break
+                case 1: 
+                    sistema.agenda_consulta()
+                case 2: 
+                    sistema.cadastra_paciente()
+                case 3: 
+                    sistema.cadastra_medico()
+                case 4: 
+                    sistema.exibe_agenda()
+                case 5: 
+                    sistema.exibe_prontuario()
+                case 6: 
+                    sistema.relacao_medicos()
+                case 7: 
+                    sistema.relarotio_geencial()
+                case 9: 
+                    break
         except: 
             print('Escolha uma opção válida: \n')
             continue
