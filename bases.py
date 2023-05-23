@@ -34,6 +34,20 @@ def cria_bases():
                             ''')
         conexao2.commit()
         
+        conexao3 = sqlite3.connect('base_agenda.db')
+        cursor_base = conexao3.cursor()
+        cursor_base.execute('''
+                            CREATE TABLE agenda (
+                                consulta_num integer,
+                                nome_pac text,
+                                consulta_com text,
+                                dia text,
+                                hora text 
+                                )
+                            ''')
+        conexao3.commit()
+        conexao3.close()
+        
         
     except sqlite3.Error as e:
         print(f"Ocorreu um erro: {e}")
