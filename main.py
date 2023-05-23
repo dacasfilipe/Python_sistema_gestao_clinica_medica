@@ -61,6 +61,7 @@ class Clinica:
                         'Número de Consultas: ': ''}
                 })
             conexao1.commit()
+            conexao1.close()
 
             conexao2 = sqlite3.connect('base_medicos.db')
             cursor_base = conexao2.cursor()
@@ -72,14 +73,12 @@ class Clinica:
                     medico[0]:medico[2]})
               
             conexao2.commit()
-
-        except Exception as e:
-            print("Ocorreu um erro:", e)
+            conexao2.close()
         finally:
-            if conexao1:
-                conexao1.close()
-            if conexao2:
-                conexao2.close()
+            pass
+                
+            
+                
     
     def cadastra_paciente(self):
         self.nome_paciente = input('Digite o nome do paciente: ').upper()
