@@ -329,3 +329,16 @@ class Clinica:
 #função para inicialicar a aplicação e exibir o menu de opções
 def main():
     sistema = Clinica()
+    while True:
+        print('1 - Agendar consulta')
+        print('-----------------------------------------------')
+        print('2 - Cadastro de Pacientes')
+        print('3 - Cadastro de Médicos')
+        print('-----------------------------------------------')
+        print('4 - Exibir Agenda')
+        print('5 - Prontuários de Pacientes')
+        print('6 - Relaç˜ao de Médicos Cadastrados')
+        print('7 - Relatório Gerencial')
+        print('-----------------------------------------------')
+        print('9 - Sair \n')
+        
