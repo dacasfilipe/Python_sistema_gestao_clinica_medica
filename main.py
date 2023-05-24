@@ -47,6 +47,7 @@ class Clinica:
         #ler dados na base de dados
         conexao1 = None
         conexao2 = None
+        conexao3 = None
         try:
             conexao1 = sqlite3.connect('base_pacientes.db')
             cursor_base = conexao1.cursor()
@@ -74,6 +75,21 @@ class Clinica:
               
             conexao2.commit()
             conexao2.close()
+            
+            conexao3 = sqlite3.connect('base_agenda.db')
+            cursor_base = conexao3.cursor()
+            for consulta in cursor_base.execute("SELECT * FROM agenda"):
+                self.agenda.update({
+                    consulta[0]: {
+                        'Id: ': consulta[0],
+                        'Nome: ': consulta[1],
+                        'Médico(a): ': consulta[2],
+                        'Dia: ': consulta[3],
+                        'Hora: ': consulta[4],
+                        }
+                })
+            conexao3.commit()
+            conexao3.close()
         finally:
             pass
                 
