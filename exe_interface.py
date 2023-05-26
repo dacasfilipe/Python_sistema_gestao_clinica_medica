@@ -56,3 +56,17 @@ cursor_base.execute("REPLACE INTO pacientes (nome_paciente, identidade, fone, em
                      'data_nasc' : sistema.data_nasc,
                      'profissao' : sistema.profissao,
                      'observacoes' : sistema.outros})
+
+sistema.nomes_pacientes.append(sistema.nome_paciente)
+
+sistema.prontuario.update({
+        sistema.nome_paciente: {
+            'Nome': sistema.nome_paciente,
+            'Data de Nascimento: ': sistema.data_nasc,
+            'Telefone para contato: ': sistema.fone,
+            'Endereço Residencial: ': sistema.endereco,
+            'Observações: ': sistema.outros,
+            'Número de Consultas: ': sistema.num_consultas,
+            'Prontuário: ': sistema.rel_agendamento}
+    })
+st.text('Cadastro Realizado / alterado com sucesso!')
