@@ -35,4 +35,13 @@ elif menu == 'Cadastrar Paciente':
         profissao = st.text_input('Digite a atividade profissional: ').upper()
         outros = st.text_input('Digite outras informações: ').upper()
         botao_enviar = st.form_submit_button('Enviar')
+    if botao_enviar:
+        sistema.nome_paciente = nome
+        sistema.identidade = identidade
+        sistema.data_nasc = data_nasc
+        sistema.fone = fone
+        sistema.email = email
+        sistema.endereco = endereco
+        sistema.profissao = profissao
+        sistema.outros = outros
     
