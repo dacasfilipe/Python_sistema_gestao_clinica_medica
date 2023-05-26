@@ -45,3 +45,14 @@ elif menu == 'Cadastrar Paciente':
         sistema.profissao = profissao
         sistema.outros = outros
     
+conexao = sqlite3.connect('base_pacientes.db')
+cursor_base = conexao_cursor(conexao)
+cursor_base.execute("REPLACE INTO pacientes (nome_paciente, identidade, fone, email, endereco, data_nascimento, profissao, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    {'nome_pac' : sistema.nome_paciente,
+                     'identidade' : sistema.identidade,
+                     'fone' : sistema.fone,
+                     'email': sistema.email,
+                     'endereco' : sistema.endereco,
+                     'data_nasc' : sistema.data_nasc,
+                     'profissao' : sistema.profissao,
+                     'observacoes' : sistema.outros})
