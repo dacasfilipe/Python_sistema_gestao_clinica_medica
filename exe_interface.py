@@ -46,7 +46,7 @@ elif menu == 'Cadastrar Paciente':
         sistema.outros = outros
     
 conexao = sqlite3.connect('base_pacientes.db')
-cursor_base = conexao_cursor(conexao)
+cursor_base = conexao.cursor(conexao)
 cursor_base.execute("REPLACE INTO pacientes (nome_paciente, identidade, fone, email, endereco, data_nascimento, profissao, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                     {'nome_pac' : sistema.nome_paciente,
                      'identidade' : sistema.identidade,
@@ -78,4 +78,23 @@ elif menu == 'Cadastrar Médico':
         crm = st.text_input('Digite o número do CRM: ')
         especialidade = st.text_input('Digite a especialidade: ').upper()
         botao_enviar = st.form_submit_button('Enviar')
+    if botao_enviar:
+        sistema.nome_med = nome
+        sistema.crm = crm
+        sistema.especialidade = especialidade
+        
+        conexao = sqlite3.connect('base_medicos.db')
+        cursor_base = conexao.cursor()
+        cursor_base.execute("INSERT INTO medicos (nome_med, crm, especialidade) VALUES (?, ?, ?)",{
+            'nome_med' : sistema.nome_med,
+            'crm' : sistema.crm,
+            'especialidade' : sistema.especialidade
+        })
+        conexao.commit()
+        conexao.close()
+
+        sistema.nomes_medicos.append(sistema.nome_med)
+        sistema.base_medicos.update({f'{sistema.especialidade}'})
+        
+        st.text('Cadastro Realizado com sucesso!')
     
