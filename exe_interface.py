@@ -70,3 +70,12 @@ sistema.prontuario.update({
             'Prontuário: ': sistema.rel_agendamento}
     })
 st.text('Cadastro Realizado / alterado com sucesso!')
+
+elif menu == 'Cadastrar Médico':
+    with st.form(key = 'cadastro_medico'):
+        st.title('Cadastro de Médico')
+        nome = st.text_input('Digite o nome completo do médico: ').upper()
+        crm = st.text_input('Digite o número do CRM: ')
+        especialidade = st.text_input('Digite a especialidade: ').upper()
+        botao_enviar = st.form_submit_button('Enviar')
+    
