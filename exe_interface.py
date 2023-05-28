@@ -142,4 +142,12 @@ elif menu == 'Agendar Consulta':
                                   step = 1)
         botao_verificar5 = st.form_submit_button('Definir')
         st.write(f'Hora: {hora_consulta} horas')
-        
+    with st.form(key = 'conclui_agendamento'):
+        if ((botao_verificar1 == True)
+            and (botao_verificar2 == True)
+            and (botao_verificar3 == True)
+            and (botao_verificar4 == True)
+            and (botao_verificar5 == True)):
+            st.write('Agendamento realizado com sucesso!')
+        botao_concluir = st.form_submit_button('Finalizar Agendamento')
+            
