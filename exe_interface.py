@@ -130,5 +130,9 @@ elif menu == 'Agendar Consulta':
             sistema.valor_consulta = sistema.valor_consulta - sistema.valor_consulta * 0.50
             st.write('Aplicado o desconto de 50%')
         botao_verificar3 = st.form_submit_button('Escolher')
-
+    with st.form(key = 'escolhe_dia'):
+        dia_consulta_ = st.date_input('Escolha o dia da consulta: ', datetime.date.today())
+        dia_consulta = dia_consulta_.day
+        botao_verificar4 = st.form_submit_button('Definir')
+        st.write(f'Dia: {dia_consulta}')
         
