@@ -109,4 +109,12 @@ elif menu == 'Agendar Consulta':
             else:
                 st.write('Paciente não cadastrado')
                 st.write('Por favor, cadastre o paciente para continuar o agendamento.')
-                
+    with st.form(key = 'escolha_medico')
+        nome_med = st.text_input('Digite o nome do médico: ').upper()
+        botao_verificar2 = st.form_submit_button(label = 'Verificar')
+        if botao_verificar2:
+            if nome_med in sistema.nomes_medicos:
+                st.write('Médico já cadastrado')
+            else:
+                st.write('Médico não cadastrado')
+                st.write('Por favor, cadastre o médico para continuar o agendamento.')            
