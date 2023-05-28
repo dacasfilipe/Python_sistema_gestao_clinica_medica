@@ -135,4 +135,11 @@ elif menu == 'Agendar Consulta':
         dia_consulta = dia_consulta_.day
         botao_verificar4 = st.form_submit_button('Definir')
         st.write(f'Dia: {dia_consulta}')
+    with st.form(key = 'escolhe_hora'):
+        hora_consulta = st.slider('Escolha um horário: ',
+                                  min_value = 8,
+                                  max_value = 18,
+                                  step = 1)
+        botao_verificar5 = st.form_submit_button('Definir')
+        st.write(f'Hora: {hora_consulta} horas')
         
