@@ -117,4 +117,18 @@ elif menu == 'Agendar Consulta':
                 st.write('Médico já cadastrado')
             else:
                 st.write('Médico não cadastrado')
-                st.write('Por favor, cadastre o médico para continuar o agendamento.')            
+                st.write('Por favor, cadastre o médico para continuar o agendamento.')    
+    with st.form(key = 'escolha_plano')
+        nome_plano = st.radio('Escolha um plano de saúde', ('Unimed', 'SUS', 'CAUZZO'))
+        if nome_plano == 'SUS':
+            sistema.valor_consulta = 0
+            st.write('Aplicado o desconto de 100%')
+        if nome_plano == 'CAUZZO':
+            sistema.valor_consulta = sistema.valor_consulta - sistema.valor_consulta * 0.40
+            st.write('Aplicado o desconto de 40%')
+        if nome_plano == 'UNIMED':
+            sistema.valor_consulta = sistema.valor_consulta - sistema.valor_consulta * 0.50
+            st.write('Aplicado o desconto de 50%')
+        botao_verificar3 = st.form_submit_button('Escolher')
+
+        
