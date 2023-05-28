@@ -97,3 +97,16 @@ elif menu == 'Cadastrar Médico':
     sistema.base_medicos.update({f'{sistema.especialidade}'})
 
     st.text('Cadastro Realizado com sucesso!')
+
+elif menu == 'Agendar Consulta':
+    with st.form(key = 'escolha_paciente'):
+        st.write('Agendamento de Consultas')
+        nome_pac = st.text_input('Digite o nome do paciente: ').upper()
+        botao_verificar1 = st.form_submit_button(label = 'Verificar')
+        if botao_verificar1:
+            if nome_pac in sistema.nomes_pacientes:
+                st.write('Paciente já cadastrado')
+            else:
+                st.write('Paciente não cadastrado')
+                st.write('Por favor, cadastre o paciente para continuar o agendamento.')
+                
