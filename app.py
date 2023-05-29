@@ -4,10 +4,6 @@ from datetime import date
 from calendar import monthrange
 import sqlite3
 
-#importar a função para criar as bases de dados
-from bases import cria_bases
-cria_bases()
-
 class Clinica:
     def __init__(self):
         self.nome_paciente = ''
@@ -44,54 +40,4 @@ class Clinica:
         self.rel_agendamento = []
         self.hist_receita_consultas = {}
         
-        #ler dados na base de dados
-        conexao1 = None
-        conexao2 = None
-        conexao3 = None
-        try:
-            conexao1 = sqlite3.connect('base_pacientes.db')
-            cursor_base = conexao1.cursor()
-            for paciente in cursor_base.execute("SELECT nome_paciente FROM pacientes"):
-                self.prontuario.update({
-                    paciente[0]: {
-                        'Nome: ': paciente[0],
-                        'Data de Nascimento: ': paciente[5],
-                        'Telefone para contato: ': paciente[2],
-                        'Endereco residencial: ': paciente[4],
-                        'Observações: ': paciente[7],
-                        'Número de Consultas: ': ''}
-                })
-            conexao1.commit()
-            conexao1.close()
-
-            conexao2 = sqlite3.connect('base_medicos.db')
-            cursor_base = conexao2.cursor()
-            for medico in cursor_base.execute("SELECT nome_medico FROM medicos"):
-                for nome in medico[0::]:
-                    self.nomes_medicos.append(nome)
-            for medico in cursor_base.execute('SELECT * FROM medicos'):
-                self.base_medicos.update({
-                    medico[0]:medico[2]})
-              
-            conexao2.commit()
-            conexao2.close()
-            
-            conexao3 = sqlite3.connect('base_agenda.db')
-            cursor_base = conexao3.cursor()
-            for consulta in cursor_base.execute("SELECT * FROM agenda"):
-                self.agenda.update({
-                    consulta[0]: {
-                        'Id: ': consulta[0],
-                        'Nome: ': consulta[1],
-                        'Médico(a): ': consulta[2],
-                        'Dia: ': consulta[3],
-                        'Hora: ': consulta[4],
-                        }
-                })
-            conexao3.commit()
-            conexao3.close()
-        finally:
-            pass
-                
-            
-                
+        
