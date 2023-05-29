@@ -1,3 +1,4 @@
+#backup exe_interface.py
 import pandas as pd
 import sqlite3
 from calendar import monthrange
@@ -48,29 +49,32 @@ elif menu == 'Cadastrar Paciente':
         sistema.endereco = endereco
         sistema.profissao = profissao
         sistema.outros = outros
-        
-        conexao = sqlite3.connect('base_pacientes.db')
-        cursor_base = conexao.cursor()
-        cursor_base.execute("INSERT OR REPLACE INTO pacientes (nome_paciente, identidade, fone, email, endereco, data_nascimento, profissao, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                            (sistema.nome_paciente, sistema.identidade, sistema.fone, sistema.email, sistema.endereco, sistema.data_nasc, sistema.profissao, sistema.outros))
-        conexao.commit()
-        conexao.close()
-        
-        sistema.nomes_pacientes.append(sistema.nome_paciente)
 
-        sistema.prontuario.update({
-            sistema.nome_paciente: {
-                'Nome': sistema.nome_paciente,
-                    'Data de Nascimento: ': sistema.data_nasc,
-                    'Telefone para contato: ': sistema.fone,
-                    'Endereço Residencial: ': sistema.endereco,
-                    'Observações: ': sistema.outros,
-                    'Número de Consultas: ': sistema.num_consultas,
-                    'Prontuário: ': sistema.rel_agendamento}
-        })
-        st.text('Cadastro Realizado / alterado com sucesso!')
+conexao = sqlite3.connect('base_pacientes.db')
+cursor_base = conexao.cursor(conexao)
+cursor_base.execute("INSERT OR REPLACE INTO pacientes (nome_paciente, identidade, fone, email, endereco, data_nascimento, profissao, observacoes) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+                    {'nome_pac': sistema.nome_paciente,
+                     'identidade': sistema.identidade,
+                     'fone': sistema.fone,
+                     'email': sistema.email,
+                     'endereco': sistema.endereco,
+                     'data_nasc': sistema.data_nasc,
+                     'profissao': sistema.profissao,
+                     'observacoes': sistema.outros})
 
-# Até aqui código corrigido
+sistema.nomes_pacientes.append(sistema.nome_paciente)
+
+sistema.prontuario.update({
+    sistema.nome_paciente: {
+        'Nome': sistema.nome_paciente,
+            'Data de Nascimento: ': sistema.data_nasc,
+            'Telefone para contato: ': sistema.fone,
+            'Endereço Residencial: ': sistema.endereco,
+            'Observações: ': sistema.outros,
+            'Número de Consultas: ': sistema.num_consultas,
+            'Prontuário: ': sistema.rel_agendamento}
+})
+st.text('Cadastro Realizado / alterado com sucesso!')
 
 elif menu == 'Cadastrar Médico':
     with st.form(key='cadastro_medico'):
