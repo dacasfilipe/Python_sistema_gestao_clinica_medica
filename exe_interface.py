@@ -18,6 +18,16 @@ menu = st.sidebar.selectbox('Selecione uma opção', ['Página Principal',
                                                     'Cadastrar Médico',
                                                     'Exibir Prontuários'])
 
+# Criação da conexão e consulta antes do loop if-elif
+conexao = sqlite3.connect('base_agenda.db')
+exibe_agenda = pd.read_sql_query("SELECT * FROM agenda", conexao)
+exibe_agenda = exibe_agenda.rename({'consulta_num':'Id',
+                                'nome_pac':'Paciente',
+                                'consulta_com':'Médico(a)',
+                                'dia':'Dia',
+                                'hora':'Hora'}, axis=1)
+exibe_agenda = exibe_agenda.set_index('Id')
+
 if menu == 'Página Principal':
     st.title('Sistema Clínica')
     st.text('Agenda')
