@@ -150,4 +150,13 @@ elif menu == 'Agendar Consulta':
             and (botao_verificar5 == True)):
             st.write('Agendamento realizado com sucesso!')
         botao_concluir = st.form_submit_button('Finalizar Agendamento')
-            
+
+#atualizar exibição de dados da agenda
+    atualiza_exibe_agenda = sqlite3.connect('base_agenda.db')
+    exibe_agenda = pd.read_sql_query("SELECT * FROM agenda", atualiza_exibe_agenda)
+    exibe_agenda = exibe_agenda.rename({'consulta_num':'Id',
+                                    'nome_pac':'Paciente',
+                                    'consulta_com':'Médico(a)',
+                                    'dia':'Dia',
+                                    'hora':'Hora'}, axis=1)
+    exibe_agenda = exibe_agenda.set_index('Id')
