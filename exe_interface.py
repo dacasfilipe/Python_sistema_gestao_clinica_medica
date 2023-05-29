@@ -21,6 +21,9 @@ menu = st.sidebar.selectbox('Selecione uma opção', ['Página Principal',
 if menu == 'Página Principal':
     st.title('Sistema Clínica')
     st.text('Agenda')
+    
+    st.dataframe(exibe_agenda)
+    
     st.write(sistema.agenda)
 
 elif menu == 'Cadastrar Paciente':
@@ -160,3 +163,4 @@ elif menu == 'Agendar Consulta':
                                     'dia':'Dia',
                                     'hora':'Hora'}, axis=1)
     exibe_agenda = exibe_agenda.set_index('Id')
+    
